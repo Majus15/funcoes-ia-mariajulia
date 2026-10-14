@@ -1,0 +1,295 @@
+:root {
+    --bg-dark: #000000;
+    --primary-pink: #d946ef;
+    --dark-pink: #831843;
+    --glass-bg: rgba(18, 3, 14, 0.90);
+    --glass-border: rgba(217, 70, 239, 0.35);
+    --text-color: #fce7f3;
+    --text-muted: #f472b6;
+    --accent: #ec4899;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+    padding: 20px;
+}
+
+/* Objetos 3D de Fundo com Degradê Rosa Escuro */
+.shape-3d {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(45px);
+    z-index: 1;
+    animation: float 8s ease-in-out infinite alternate;
+}
+
+.shape-1 {
+    width: 320px;
+    height: 320px;
+    background: linear-gradient(135deg, #be185d, #831843);
+    top: 5%;
+    left: 8%;
+}
+
+.shape-2 {
+    width: 280px;
+    height: 280px;
+    background: linear-gradient(135deg, #d946ef, #4c0519);
+    bottom: 5%;
+    right: 8%;
+    animation-delay: -3s;
+}
+
+.shape-3 {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, #f43f5e, #881337);
+    top: 45%;
+    right: 35%;
+    animation-delay: -5s;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg) scale(1); }
+    100% { transform: translateY(-35px) rotate(20deg) scale(1.1); }
+}
+
+/* Container Estilo Modal Glassmorphism */
+.caixa-principal {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 680px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.95), 
+                0 0 35px rgba(217, 70, 239, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.header-modal {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 16px;
+}
+
+.header-modal h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    background: linear-gradient(to right, #f472b6, #fb7185);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.icon-logo {
+    color: var(--primary-pink);
+    width: 28px;
+    height: 28px;
+}
+
+/* Input / Campo de Busca */
+.caixa-perguntas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.caixa-perguntas label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fbcfe8;
+}
+
+.input-container {
+    display: flex;
+    gap: 10px;
+}
+
+#campo-pergunta {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#campo-pergunta:focus {
+    border-color: var(--primary-pink);
+    box-shadow: 0 0 12px rgba(217, 70, 239, 0.4);
+}
+
+#btn-enviar {
+    background: linear-gradient(135deg, var(--dark-pink), var(--accent));
+    border: none;
+    color: #fff;
+    padding: 0 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+#btn-enviar:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, var(--accent), var(--primary-pink));
+}
+
+/* Sugestões Rápidas */
+.caixa-alternativas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.titulo-sugestoes {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#lista-sugestoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.btn-sugestao {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-color);
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-sugestao:hover {
+    background: rgba(217, 70, 239, 0.3);
+    border-color: var(--primary-pink);
+}
+
+/* Animação de Carregamento */
+.status-carregando {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon-spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+/* Área de Resultado Interna */
+.caixa-resultados {
+    display: none;
+    background: rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(217, 70, 239, 0.35);
+    border-radius: 16px;
+    padding: 20px;
+    flex-direction: column;
+    gap: 16px;
+    animation: fadeIn 0.4s ease;
+}
+
+.caixa-resultados.mostrar {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.header-resultado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-resultado h2 {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-voz {
+    background: var(--dark-pink);
+    border: 1px solid var(--primary-pink);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s;
+}
+
+.btn-voz:hover {
+    background: var(--accent);
+}
+
+.texto-resultados {
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: #fbcfe8;
+}
+
+.area-noticia {
+    margin-top: 4px;
+}
+
+.btn-link-noticia {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary-pink);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.btn-link-noticia:hover {
+    color: #f472b6;
+    text-decoration: underline;
+}

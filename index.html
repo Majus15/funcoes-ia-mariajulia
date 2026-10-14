@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OdontoIA - Busca DuckDuckGo Integrada</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- Objetos e Formas 3D no Fundo -->
+    <div class="shape-3d shape-1"></div>
+    <div class="shape-3d shape-2"></div>
+    <div class="shape-3d shape-3"></div>
+
+    <!-- Modal Principal -->
+    <main class="caixa-principal">
+        <header class="header-modal">
+            <i data-lucide="search-check" class="icon-logo"></i>
+            <h1>OdontoIA + DuckDuckGo</h1>
+        </header>
+
+        <!-- Campo de Pesquisa Directa -->
+        <section class="caixa-perguntas">
+            <label for="campo-pergunta">Pergunte algo (Pesquisa direta via DuckDuckGo):</label>
+            <div class="input-container">
+                <input type="text" id="campo-pergunta" placeholder="Ex: gengivite, carie, implante dentario...">
+                <button id="btn-enviar" title="Pesquisar">
+                    <i data-lucide="search"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Sugestões de Atalho -->
+        <section class="caixa-alternativas">
+            <p class="titulo-sugestoes">Atalhos de busca rápida:</p>
+            <div id="lista-sugestoes"></div>
+        </section>
+
+        <!-- Animação de Carregamento -->
+        <div id="carregando" class="status-carregando" style="display: none;">
+            <i data-lucide="loader-2" class="icon-spin"></i> Consultando o DuckDuckGo em tempo real...
+        </div>
+
+        <!-- Exibição do Resultado Dentro da Própria Página -->
+        <section class="caixa-resultados">
+            <div class="header-resultado">
+                <h2><i data-lucide="bot"></i> Resposta do DuckDuckGo</h2>
+                <button id="btn-voz" class="btn-voz" title="Ouvir Resposta">
+                    <i data-lucide="volume-2" id="icon-voz"></i> Ouvir Voz
+                </button>
+            </div>
+            
+            <p class="texto-resultados"></p>
+
+            <div class="area-noticia">
+                <a id="link-noticia" href="#" target="_blank" rel="noopener noreferrer" class="btn-link-noticia">
+                    <i data-lucide="external-link"></i> Fonte / Notícia original do resultado
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
